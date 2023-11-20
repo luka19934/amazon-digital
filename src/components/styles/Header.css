@@ -1,0 +1,36 @@
+:root {
+  --header-height: 100px;
+}
+.header {
+  height: var(--header-height);
+  background-color: rgb(77, 126, 62);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+.logo {
+  height: 100%;
+}
+
+.navigation {
+  height: 100%;
+}
+
+.header .navLink {
+  color: white;
+  line-height: var(--header-height);
+  text-decoration: none;
+  padding: 0px 10px;
+  display: inline-block;
+}
+
+.active {
+  background-color: rgb(49, 196, 141);
+}
+
+.navLink:hover {
+  background-color: rgb(49, 196, 141);
+}

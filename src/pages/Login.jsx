@@ -11,13 +11,13 @@ const Login = () => {
 
   const configs = [
     {
-      label: "მომხმარებლის სახელი",
+      label: "Username",
       attributes: {
         name: "username",
       },
     },
     {
-      label: "პაროლი",
+      label: "Password",
       attributes: {
         name: "password",
         type: "password",
@@ -28,6 +28,7 @@ const Login = () => {
   const onSubmit = (formData) => {
     login(formData);
   };
+  console.log("rame");
 
   return (
     <div>

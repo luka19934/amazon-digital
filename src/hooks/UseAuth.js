@@ -16,7 +16,7 @@ const useAuth = () => {
       })
       .catch((e) => {
         console.error("error", e);
-        alert("ავტორიზაცია ვერ მოხერხდა.");
+        alert("Authentication failed. Try again.");
       });
   }
 

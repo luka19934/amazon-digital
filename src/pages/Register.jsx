@@ -15,20 +15,20 @@ const Register = () => {
 
   const configs = [
     {
-      label: "მომხმარებლის სახელი",
+      label: "Username",
       attributes: {
         name: "username",
       },
     },
     {
-      label: "იმეილი",
+      label: "Email",
       attributes: {
         name: "email",
         type: "email",
       },
     },
     {
-      label: "პაროლი",
+      label: "Password",
       attributes: {
         name: "password",
         type: "password",
@@ -40,12 +40,12 @@ const Register = () => {
     axios
       .post(api.users.add, formData)
       .then(() => {
-        alert("თქვენ წარმატებით გაიარეთ რეგისტრაცია.");
+        alert("Registration successful!");
         navigate("/login");
       })
       .catch((error) => {
         console.error(error);
-        alert("დაფიქსირდა შეცდომა.");
+        alert("System error");
       });
   };
 

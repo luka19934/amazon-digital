@@ -16,9 +16,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />}></Route>
-          <Route path="register" element={<Register />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="login" element={<Login />}></Route>
+
           <Route element={<AuthRoute />}>
             <Route path="profile" element={<Profile />}></Route>
             <Route path="products" element={<Products />}></Route>
@@ -26,6 +26,7 @@ function App() {
             <Route path="cart" element={<Cart />}></Route>
           </Route>
         </Route>
+        <Route index element={<Home />}></Route>
       </Routes>
     </BrowserRouter>
   );
