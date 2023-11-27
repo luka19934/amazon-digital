@@ -1,10 +1,13 @@
+import { ArrowBackRounded } from "@mui/icons-material";
+import { Button } from "@mui/material";
 import React from "react";
-import Form from "../components/Form";
+import { Navigate, useNavigate } from "react-router-dom";
+import Form from "../components/Form/Form";
 import useAuth from "../hooks/UseAuth";
-import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const { login, isAuthed } = useAuth();
+  const navigate = useNavigate();
   if (isAuthed()) {
     return <Navigate to="/products" />;
   }
@@ -28,10 +31,16 @@ const Login = () => {
   const onSubmit = (formData) => {
     login(formData);
   };
-  console.log("rame");
 
   return (
-    <div>
+    <div style={{ padding: 5 }}>
+      <Button
+        startIcon={<ArrowBackRounded />}
+        variant="outlined"
+        onClick={() => navigate("/")}
+      >
+        Home page
+      </Button>
       <Form onSubmit={onSubmit} configs={configs} />
     </div>
   );

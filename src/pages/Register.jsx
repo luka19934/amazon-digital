@@ -1,9 +1,10 @@
-import axios from "axios";
 import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Form from "../components/Form";
-import api from "../api/requestUrls";
+import api from "../api";
+import Form from "../components/Form/Form";
 import useAuth from "../hooks/UseAuth";
+import { Button } from "@mui/material";
+import { ArrowBackRounded } from "@mui/icons-material";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -37,8 +38,8 @@ const Register = () => {
   ];
 
   const onSubmit = (formData) => {
-    axios
-      .post(api.users.add, formData)
+    api
+      .post("/users/add", formData)
       .then(() => {
         alert("Registration successful!");
         navigate("/login");
@@ -50,7 +51,14 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: 5 }}>
+      <Button
+        startIcon={<ArrowBackRounded />}
+        variant="outlined"
+        onClick={() => navigate("/")}
+      >
+        Home page
+      </Button>
       <Form configs={configs} onSubmit={onSubmit} />
     </div>
   );

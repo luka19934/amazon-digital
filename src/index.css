@@ -4,3 +4,6 @@ html body {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+:root {
+  --main-green-color: rgb(57, 131, 120);
+}

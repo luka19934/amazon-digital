@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import api from "../api/requestUrls";
+import api from "../api";
 import useLocalStorage from "./UseLocalStorage";
 
 const useAuth = () => {
@@ -8,8 +7,8 @@ const useAuth = () => {
   const navigate = useNavigate();
 
   async function login(data) {
-    axios
-      .post(api.auth.login, data)
+    api
+      .post("/auth/login", data)
       .then((res) => {
         setAuthData(res.data);
         navigate("/products");
@@ -22,6 +21,7 @@ const useAuth = () => {
 
   function logout() {
     setAuthData(null);
+    navigate("/login");
   }
 
   function isAuthed() {

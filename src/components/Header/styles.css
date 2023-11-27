@@ -1,0 +1,63 @@
+:root {
+  --header-height: 70px;
+  --navlink-hover-bg-color: rgb(55, 206, 184);
+}
+.header {
+  height: var(--header-height);
+  background-color: var(--main-green-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.logo {
+  flex: 1;
+  height: 100%;
+}
+
+.logo img {
+  height: 100%;
+}
+
+.navigation {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navLink {
+  color: white;
+  line-height: var(--header-height);
+  text-decoration: none;
+  padding: 0px 10px;
+  display: inline-block;
+  height: 100%;
+}
+
+.navLink .cartIcon {
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+.active {
+  background-color: var(--navlink-hover-bg-color);
+}
+
+.navLink:hover {
+  background-color: var(--navlink-hover-bg-color);
+}
+
+.profileImage {
+  height: 70%;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.profileImage img {
+  height: 100%;
+  cursor: pointer;
+}
