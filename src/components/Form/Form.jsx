@@ -22,7 +22,7 @@ const Form = ({ configs, onSubmit, initialData = {} }) => {
         return (
           <div key={config.attributes.name}>
             <TextField
-              value={formData[config.attributes.name]}
+              value={formData[config.attributes.name] || ""}
               {...config.attributes}
               onChange={handleChange}
               label={config.label}

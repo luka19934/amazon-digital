@@ -1,14 +1,13 @@
-import { Alert } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import api from "../api";
 import Form from "../components/Form/Form";
 import Loader from "../components/Loader";
 import useAuth from "../hooks/UseAuth";
+import AlertContext from "../contexts/AlertContext";
 
 const Profile = () => {
   const [userData, setUserData] = useState();
-  const [displaySuccess, setDisplaySuccess] = useState(false);
-  const [displayError, setDisplayError] = useState(false);
+  const { alertSuccess, alertError } = useContext(AlertContext);
 
   const { authData } = useAuth();
   useEffect(() => {
@@ -18,10 +17,9 @@ const Profile = () => {
         setUserData(response.data);
       })
       .catch(() => {
-        setDisplayError(true);
-        setDisplaySuccess(false);
+        alertError("System Error! Please try again...");
       });
-  }, [authData.id]);
+  }, [alertError, authData.id]);
 
   const configs = [
     {
@@ -72,10 +70,11 @@ const Profile = () => {
   const handleSubmit = (formData) => {
     api
       .put(`/users/${authData.id}`, formData)
-      .then(() => setDisplaySuccess(true))
+      .then(() => {
+        alertSuccess("User data was successfully updated!");
+      })
       .catch(() => {
-        setDisplayError(true);
-        setDisplaySuccess(false);
+        alertError("System Error! Please try again...");
       });
   };
 
@@ -88,16 +87,6 @@ const Profile = () => {
         onSubmit={handleSubmit}
         initialData={getFormData()}
       />
-      {displaySuccess && (
-        <Alert severity="success" onClose={() => setDisplaySuccess(false)}>
-          User information was successfully updated.
-        </Alert>
-      )}
-      {displayError && (
-        <Alert severity="error" onClose={() => setDisplayError(false)}>
-          Error! Please try again...
-        </Alert>
-      )}
     </>
   );
 };
