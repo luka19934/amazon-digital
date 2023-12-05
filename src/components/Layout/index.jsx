@@ -19,11 +19,17 @@ const Layout = ({ children }) => {
     setErrorMessage(message);
   }, []);
 
+  const clearAlert = useCallback(() => {
+    setSuccessMessage(undefined);
+    setErrorMessage(undefined);
+  }, []);
+
   return (
     <AlertContext.Provider
       value={{
         alertSuccess,
         alertError,
+        clearAlert,
       }}
     >
       <div className="layout">

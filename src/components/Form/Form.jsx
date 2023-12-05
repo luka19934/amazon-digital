@@ -2,7 +2,12 @@ import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import "./styles.css";
 
-const Form = ({ configs, onSubmit, initialData = {} }) => {
+const Form = ({
+  configs,
+  onSubmit,
+  initialData = {},
+  buttonLabel = "Submit",
+}) => {
   const [formData, setFormData] = useState(initialData);
 
   function handleChange(e) {
@@ -35,7 +40,7 @@ const Form = ({ configs, onSubmit, initialData = {} }) => {
       <br />
       <br />
       <Button onClick={handleSubmit} variant="contained">
-        Submit
+        {buttonLabel}
       </Button>
     </div>
   );

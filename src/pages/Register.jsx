@@ -62,7 +62,7 @@ const Register = () => {
       >
         Home page
       </Button>
-      <Form configs={configs} onSubmit={onSubmit} />
+      <Form configs={configs} onSubmit={onSubmit} buttonLabel="Sign up" />
       {successMessage && (
         <Alert
           severity="success"

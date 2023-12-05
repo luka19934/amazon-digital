@@ -43,7 +43,7 @@ const Login = () => {
       >
         Home page
       </Button>
-      <Form onSubmit={onSubmit} configs={configs} />
+      <Form onSubmit={onSubmit} configs={configs} buttonLabel="Sign in" />
       {error && !close && (
         <Alert severity="error" onClose={() => setClose(true)}>
           Authentication failed
