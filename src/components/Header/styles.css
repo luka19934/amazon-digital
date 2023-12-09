@@ -18,6 +18,7 @@
 .logo {
   flex: 1;
   height: 100%;
+  cursor: pointer;
 }
 
 .logo img {
