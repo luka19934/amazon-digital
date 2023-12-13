@@ -10,15 +10,15 @@ import useCart from "../hooks/UseCart";
 const Product = () => {
   const { add } = useCart();
   const { alertError } = useContext(AlertContext);
-  const [data, setData] = useState();
+  const [productData, setProductData] = useState();
   const params = useParams();
   useEffect(() => {
     api
       .get(`/products/${params.id}`)
-      .then((res) => setData(res.data))
+      .then((res) => setProductData(res.data))
       .catch(() => alertError("System Error!"));
   }, [alertError, params.id]);
-  if (!data) return <Loader />;
+  if (!productData) return <Loader />;
 
   return (
     <div
@@ -28,37 +28,45 @@ const Product = () => {
       }}
     >
       <ImageList sx={{ width: 400, height: 350 }} cols={3} rowHeight={164}>
-        {data.images.map((imgUrl) => (
+        {productData.images.map((imgUrl) => (
           <ImageListItem key={imgUrl}>
             <img src={imgUrl} alt={imgUrl} loading="lazy" />
           </ImageListItem>
         ))}
       </ImageList>
       <div>
-        <h2>{data.title}</h2>
-        <h4>{data.category}</h4>
-        <p>Description: {data.description}</p>
-        <span>Brand: {data.brand}</span>
+        <h2>{productData.title}</h2>
+        <h4>{productData.category}</h4>
+        <p>Description: {productData.description}</p>
+        <span>Brand: {productData.brand}</span>
         <br />
         <br />
         <span>
-          Price: <b style={{ color: "green" }}>${data.price}</b>
+          Price: <b style={{ color: "green" }}>${productData.price}</b>
         </span>
         <br />
         <br />
         <span style={{ color: "red" }}>
-          <b style={{ color: "black" }}>Discount:</b> -{data.discountPercentage}
-          %
+          <b style={{ color: "red" }}>Discount:</b> -
+          {productData.discountPercentage}%
         </span>
         <br />
         <br />
-        <span>Stock:{data.stock}</span>
+        <span>Stock: {productData.stock}</span>
         <br />
         <br />
-        Rating: <Rating name="Rating" value={data.rating} precision={0.1} />
+        <div>
+          <span style={{ verticalAlign: "middle" }}>Rating: </span>
+          <Rating
+            style={{ verticalAlign: "middle" }}
+            name="Rating"
+            value={productData.rating}
+            precision={0.1}
+          />
+        </div>
         <br />
         <br />
-        <Button onClick={() => add(params.id)}>Add to cart</Button>
+        <Button onClick={() => add(productData)}>Add to cart</Button>
       </div>
     </div>
   );

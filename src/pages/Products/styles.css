@@ -7,11 +7,6 @@
 .product-page {
   text-align: center;
 }
-.search-bar {
-  display: flex;
-  margin-bottom: 20px;
-  gap: 5px;
-}
 .products-list > :nth-child(n) {
   margin-right: 0;
 }
