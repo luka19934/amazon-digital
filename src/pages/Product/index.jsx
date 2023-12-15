@@ -1,11 +1,12 @@
 // @ts-nocheck
 import React, { useContext, useEffect, useState } from "react";
-import api from "../api";
+import api from "../../api";
 import { useParams } from "react-router-dom";
-import AlertContext from "../contexts/AlertContext";
+import AlertContext from "../../contexts/AlertContext";
 import { Button, ImageList, ImageListItem, Rating } from "@mui/material";
-import Loader from "../components/Loader";
-import useCart from "../hooks/UseCart";
+import Loader from "../../components/Loader";
+import useCart from "../../hooks/UseCart";
+import "./styles.css";
 
 const Product = () => {
   const { add } = useCart();
@@ -21,12 +22,7 @@ const Product = () => {
   if (!productData) return <Loader />;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 30,
-      }}
-    >
+    <div className="product-page">
       <ImageList sx={{ width: 400, height: 350 }} cols={3} rowHeight={164}>
         {productData.images.map((imgUrl) => (
           <ImageListItem key={imgUrl}>
@@ -42,12 +38,12 @@ const Product = () => {
         <br />
         <br />
         <span>
-          Price: <b style={{ color: "green" }}>${productData.price}</b>
+          Price: <b className="colorGreen">${productData.price}</b>
         </span>
         <br />
         <br />
-        <span style={{ color: "red" }}>
-          <b style={{ color: "red" }}>Discount:</b> -
+        <span className="colorRed">
+          <b className="colorRed">Discount:</b> -
           {productData.discountPercentage}%
         </span>
         <br />
@@ -56,9 +52,9 @@ const Product = () => {
         <br />
         <br />
         <div>
-          <span style={{ verticalAlign: "middle" }}>Rating: </span>
+          <span className="verticallyAligned">Rating: </span>
           <Rating
-            style={{ verticalAlign: "middle" }}
+            className="verticallyAligned"
             name="Rating"
             value={productData.rating}
             precision={0.1}

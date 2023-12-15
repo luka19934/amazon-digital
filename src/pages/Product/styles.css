@@ -1,0 +1,16 @@
+.product-page {
+  display: flex;
+  gap: 30px;
+}
+
+.colorGreen {
+  color: green;
+}
+
+.colorRed {
+  color: red;
+}
+
+.verticallyAligned {
+  vertical-align: middle;
+}

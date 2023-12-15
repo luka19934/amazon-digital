@@ -4,9 +4,13 @@
   gap: 15px;
   justify-content: space-between;
 }
-.product-page {
+.products-page {
   text-align: center;
 }
 .products-list > :nth-child(n) {
   margin-right: 0;
+}
+.pagination {
+  display: inline-block;
+  margin-top: 20px;
 }

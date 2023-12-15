@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
 import Loader from "../../components/Loader";
-import Pagination from "../../components/Pagination";
 import ProductCard from "../../components/ProductCard";
 import usePagination from "../../hooks/UsePagination";
 import "./styles.css";
 import SearchBar from "../../components/SearchBar";
 import CategoryFilter from "../../components/CategoryFilter";
+import { Pagination } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +31,7 @@ const Products = () => {
   }, [isCategorySelected, query, skip]);
 
   return (
-    <div className="product-page">
+    <div className="products-page">
       <SearchBar setQuery={setQuery} />
       <CategoryFilter
         setProducts={setProducts}
@@ -49,7 +49,13 @@ const Products = () => {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          <Pagination pageCount={pageCount} page={page} setPage={setPage} />
+          <Pagination
+            className="pagination"
+            color="primary"
+            page={page}
+            count={pageCount}
+            onChange={(_, value) => setPage(value)}
+          />
         </>
       ) : (
         <Loader />
