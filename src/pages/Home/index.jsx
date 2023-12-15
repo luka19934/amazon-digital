@@ -1,14 +1,16 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ProductCarousel from "../../components/ProductCarousel";
+import "./styles.css";
 
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="home-page">
       <h1>Home Page</h1>
       <Button
-        style={{ marginRight: 5 }}
+        className="leftButton"
         variant="outlined"
         onClick={() => navigate("./register")}
       >
@@ -17,6 +19,7 @@ const Home = () => {
       <Button variant="outlined" onClick={() => navigate("./login")}>
         Log In
       </Button>
+      <ProductCarousel />
     </div>
   );
 };
