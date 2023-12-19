@@ -7,3 +7,7 @@
 .copyright {
   margin-top: 10px;
 }
+.contact span,
+.contact .icon {
+  vertical-align: middle;
+}

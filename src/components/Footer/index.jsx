@@ -13,7 +13,8 @@ const Footer = () => {
       <InstagramIcon className="icon" />
       <TwitterIcon className="icon" />
       <div className="contact">
-        <PhoneIcon className="icon" /> <span>+995592057933</span>
+        <PhoneIcon className="icon" />{" "}
+        <span style={{ marginRight: 15 }}>+995592057933</span>
         <EmailIcon className="icon" /> <span>online-shop@gmail.com</span>
       </div>
       <div className="copyright">
