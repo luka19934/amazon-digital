@@ -1,11 +1,18 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import ProductCarousel from "../../components/ProductCarousel";
 import "./styles.css";
+import useAuth from "../../hooks/UseAuth";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isAuthed } = useAuth();
+
+  if (isAuthed()) {
+    return <Navigate to="./products" />;
+  }
+
   return (
     <div className="home-page">
       <h1>Home Page</h1>
